@@ -54,4 +54,18 @@ router.get('/users', (req, res, next) => { //✔
   } 
 });
 
+router.get('/logout', (req, res) => {
+  if(req.session) {
+    req.session.destroy(err => {
+      if(err) {
+        res.send({ error: "Sorry homie we couldn't log you out." })
+      } else {
+        res.status(204).end();
+      }
+    });
+  } else {
+    res.status(200).json({ message: "Bro you were never even logged in" });
+  };
+});
+
 module.exports = router;

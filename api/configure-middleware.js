@@ -5,7 +5,7 @@ const session = require('express-session');
 
 const sessionConfig = {
   name: 'CookieMonster', //it's a good idea to keep the name different
-  secret: 'The Cookie Monster likes to eat cookies',
+  secret: process.env.SESSION_SECRET || 'The Cookie Monster likes to eat cookies',
   cookie: {
     maxAge: 1000 * 30,
     secure: false, //REMEBER to change this to true after production
