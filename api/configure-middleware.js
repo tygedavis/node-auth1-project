@@ -7,7 +7,7 @@ const sessionConfig = {
   name: 'CookieMonster', //it's a good idea to keep the name different
   secret: 'The Cookie Monster likes to eat cookies',
   cookie: {
-    maxAge: 1000 * 60,
+    maxAge: 1000 * 30,
     secure: false, //REMEBER to change this to true after production
     httpOnly: true,
   },
