@@ -27,6 +27,7 @@ router.post('/login', (req,res) => { //✔
     .first()
     .then(user => {
       if(user && bcrypt.compareSync(password, user.password)) {
+        req.session.user = user;
         res.status(200).json({ message: `Logged in: ${user.username}` });
       } else {
         res.status(401).json({ error: "Invalid credentials" });
@@ -45,8 +46,7 @@ router.get('/users', (req, res, next) => { //✔
       } else {
         console.log('GET success')
         Users.find()
-          .then(users => {
-            console.log(users)
+          .then(users => { 
             res.status(200).json(users)
           })
           .catch(err => {
